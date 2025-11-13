@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ai_entrepreneur
+    username: ai_user
+    password: CHANGE_ME
+    # настройки пула (необязательно, но удобно)
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 20000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true         # печатать SQL (дублирует DEBUG для наглядности)
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC   # чтобы даты/время были в UTC
+
+# В dev-профиле удобнее сразу видеть детали health, включая db
+management:
+  endpoint:
+    health:
+      show-details: always
+
+app:
+  security:
+    jwt:
+      secret: "CHANGE_ME"
+      expires-in: 900
+      issuer: "ai-entrepreneur"

@@ -1,0 +1,22 @@
+# общий уровень логов
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+# Actuator — как раньше
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+# Профиль по умолчанию — dev (чтобы IDE/запуск без флагов сразу шёл как dev)
+spring:
+  profiles:
+    default: dev
+
+server:
+  port: 8080
